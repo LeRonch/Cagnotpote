@@ -1,0 +1,49 @@
+{{ form_start(form) }}
+
+
+
+    <div class="input-field col s12 l12">
+    
+    {% if cag_name is defined %}
+
+        {{ form_widget(form.title, {
+            'attr': {'value': cag_name}
+        }) }}
+
+    {% else %}
+
+        {{ form_widget(form.title) }}
+
+    {% endif %}
+
+        {{ form_label(form.title, 'Title', {
+            'label_attr': {'class': 'title'}
+        }) }}
+
+    </div>
+
+
+    <div class="input-field col s12 l12">
+         {{ form_widget(form.content) }}
+         {{ form_label(form.content, 'Description', {
+            'label_attr': {'class': 'description'}
+        }) }}
+    </div>
+
+    <div class="input-field col s12 l6">
+         {{ form_widget(form.goal) }}
+          {{ form_label(form.goal, 'Goal', {
+            'label_attr': {'class': 'goal'}
+        }) }}
+    </div>
+
+    <div class="input-field col s12 l6">
+         {{ form_widget(form.name) }}
+          {{ form_label(form.name, 'Name', {
+            'label_attr': {'class': 'name'}
+        }) }}
+    </div>
+
+    <button class="btn btn-large waves-effect waves-light pink lighten-1 col s12" style="margin-top: 20px;" type="submit">{{ button_label|default('Save') }}</button>
+
+{{ form_end(form) }}                        

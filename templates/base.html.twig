@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+           <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{{ asset ('assets/css/materialize.min.css') }}"  media="screen,projection"/>
+    <!--Custom styles-->
+    <link type="text/css" rel="stylesheet" href="{{ asset ('assets/css/styles.css') }}"  media="screen,projection"/>
+    <script src="https://js.stripe.com/v3/"></script>
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+        {% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+        {% endblock %}
+
+       
+    </head>
+    <body>
+
+     <div class="navbar-fixed">
+        <nav class="white">
+            <div class="nav-wrapper">
+                <a href="{{path ('home')}}" class="brand-logo center">Cagnot'Potes</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="{{path ('campaign_new')}}" class="waves-effect waves-light btn pink lighten-1">Créer une campagne</a></li>
+                </ul>
+
+                <ul id="nav-mobile" class="sidenav">
+                    <li><a href="{{path ('campaign_new')}}" class="waves-effect waves-light btn pink lighten-1">Créer une campagne</a></li>
+                </ul>
+                <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+    </div>
+
+
+        {% block body %}{% endblock %}
+
+        <footer class="page-footer teal">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Cagnot'Potes</h5>
+                    <p class="grey-text text-lighten-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo.</p>
+                </div>
+                <div class="col l3 s12 offset-l3">
+                    <h5 class="white-text">Liens</h5>
+                    <ul class="footer-links">
+                        <li><a class="white-text" href="#">Comment ça marche ?</a></li>
+                        <li><a class="white-text" href="{{path ('campaign_index')}}">Voir les campagnes</a></li>
+                        <li><a class="white-text" href="{{path ('campaign_new')}}">Créer une campagne</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                Made with love by <a class="white-text" href="http://trombi.simplon-roanne.com/">Simplon Roanne</a>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script type="text/javascript" src="{{ asset ('assets/js/materialize.min.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset ('assets/js/scripts.js') }}"></script>
+    <!--Init & custom scripts-->
+        {% block javascripts %}
+            {#{{ encore_entry_script_tags('app') }}#}
+        {% endblock %}
+        </body>
+</html>

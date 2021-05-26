@@ -1,0 +1,80 @@
+{{ form_start(form, {
+             'attr': {'id': 'payment-form'}
+         }) }}
+
+    <h5 class="center">Votre identité</h5>
+
+    {% if amount is defined %}
+
+    <div class="input-field col s12 l6">
+         {{ form_widget(form.amount, {
+            'attr': {'min': '1', 'value': amount}
+         }) }}
+         {{ form_label(form.amount, 'Amount', {
+            'label_attr': {'class': 'amount'}
+        }) }}
+    </div>
+
+    {% else %}
+
+    <div class="input-field col s12 l6">
+         {{ form_widget(form.amount, {
+            'attr': {'min': '1'}
+         }) }}
+         {{ form_label(form.amount, 'Amount', {
+            'label_attr': {'class': 'amount'}
+        }) }}
+    </div>
+
+    {% endif %}
+
+    <div class="input-field col s6 l6">
+         {{ form_widget(form.participant_id.name) }}
+         {{ form_label(form.participant_id.name, 'Name', {
+            'label_attr': {'class': 'name'}
+        }) }}
+    </div>
+        <div class="input-field col s6 l6">
+         {{ form_widget(form.participant_id.email) }}
+         {{ form_label(form.participant_id.email, 'Email', {
+            'label_attr': {'class': 'email'}
+        }) }}
+    </div>
+    <div class="input-field col s12 l6">
+
+    <p>
+        <label>
+            {{ form_widget(form.participant_id.is_anonymous) }}
+            <span>Masquer mon email auprès des autres participants</span>
+        </label>
+    </p>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <h5 class="center">Paiement</h5>
+
+    <div id="card" class="input-field col s12">
+        <input id="card_name" type="text" class="validate">
+        <label for="card_name">Nom sur la carte</label>
+    </div>
+
+    <div id="card-element" class="input-field col s12">
+        <input id="card_number" type="text" class="validate">
+        <label for="card-element" for="card_number">Numéro de la carte</label>
+    </div>
+
+    <div class="input-field col s12 l6">
+        <a href="{{path ('campaign_show', {'id': campaign.id})}}" class="btn btn-large waves-effect waves-light grey col s12">Annuler</a>
+    </div>
+
+    <div class="input-field col s12 l6">
+        <button class="btn btn-large waves-effect waves-light pink lighten-1 col s12" type="submit">
+            Participer
+            <i class="material-icons right">euro_symbol</i>
+        </button>
+    </div>
+
+<script src="{{asset ('assets/js/main.js')}}"></script>
+
+{{ form_end(form) }}
